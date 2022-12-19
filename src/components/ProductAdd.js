@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { config } from '../config';
 
 const ProductAdd = ({ onNewProduct }) => {
   const [name, setName] = useState('');
@@ -25,9 +26,9 @@ const ProductAdd = ({ onNewProduct }) => {
         data.status = selectedStatus === 'true' ? true : false;
         
         let headers = new Headers();
-        headers.append('Origin','http://localhost:8080');
+        headers.append('Origin', config.host);
 
-        fetch('http://localhost:8080/product', {
+        fetch(`${config.host}/product`, {
             mode: 'cors',
             method: 'POST',
             headers: headers,

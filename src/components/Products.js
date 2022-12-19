@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { config } from "../config";
 import ProductItem from './ProductItem';
 
 const Products = ({ product }) => {
@@ -11,8 +12,8 @@ const Products = ({ product }) => {
             try {
                 let headers = new Headers();
 
-                headers.append('Origin','http://localhost:8080');
-                const response = await fetch('http://localhost:8080/products', {
+                headers.append('Origin', config.host);
+                const response = await fetch(`${config.host}/products`, {
                     mode: 'cors',
                     method: 'GET',
                     headers: headers
